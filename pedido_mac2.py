@@ -341,7 +341,6 @@ def main(page: ft.Page):
     etiquetas_actual = [f"{str(anio_actual)[2:]}-{mes}" for mes in meses]
     etiquetas_completas = etiquetas_2024 + etiquetas_actual
     import matplotlib.pyplot as plt
-    from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
     import io
     import base64
 
