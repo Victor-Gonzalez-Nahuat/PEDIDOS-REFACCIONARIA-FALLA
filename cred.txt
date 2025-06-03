@@ -1,0 +1,14 @@
+def obtener_config_mysql():
+    try:
+        return {
+            "host": "tramway.proxy.rlwy.net",
+            "port": 37742,
+            "user": "root",
+            "password": "sOcbAOvZwCWyJZmgLKYmugQgFurELgxT",
+            "database": "railway",
+            "connect_timeout": 30,
+            "cursorclass": DictCursor
+        }
+    except Exception as e:
+        print(f"❌ Error al obtener configuración MySQL: {e}")
+        return None

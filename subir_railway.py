@@ -58,7 +58,6 @@ def main(page: ft.Page):
     page.window.width = 400
     page.window.height = 600
     
-    # Caja de salida tipo terminal
     output_box = ft.TextField(
         label="Terminal",
         multiline=True,
