@@ -19,6 +19,7 @@ def run_git_commands(page, output_box):
             add_output("🚀 Ejecutando comandos...")
 
             try:
+                page.close(alert)
                 result_add = subprocess.run(["git", "add", "."], capture_output=True, text=True)
                 add_output(result_add.stdout or result_add.stderr)
 
@@ -29,6 +30,7 @@ def run_git_commands(page, output_box):
                 add_output(result_push.stdout or result_push.stderr)
 
                 add_output("✅ Código subido exitosamente a Railway.")
+                
 
             except Exception as err:
                 add_output("❌ Error al ejecutar los comandos: " + str(err))
@@ -51,7 +53,10 @@ def run_git_commands(page, output_box):
 
 def main(page: ft.Page):
     page.title = "Subir a Railway"
+    page.theme_mode = ft.ThemeMode.LIGHT
     title = ft.Text("SUBIR A RAILWAY", size=30, weight="bold", color=ft.colors.BLUE_900)
+    page.window.width = 400
+    page.window.height = 600
     
     # Caja de salida tipo terminal
     output_box = ft.TextField(
@@ -65,8 +70,12 @@ def main(page: ft.Page):
         border_color=ft.colors.GREY_300,
     )
 
-    button = ft.ElevatedButton("Subir a Railway", on_click=lambda e: run_git_commands(page, output_box))
+    button = ft.ElevatedButton("Subir a Railway",width=350, height=60, icon=ft.icons.UPLOAD, on_click=lambda e: run_git_commands(page, output_box))
 
-    page.add(title, button, output_box)
+    page.add(ft.Column([
+        ft.Row([title],alignment=ft.MainAxisAlignment.CENTER), 
+        ft.Row([button], alignment=ft.MainAxisAlignment.CENTER), 
+        output_box
+    ]))
 
 ft.app(target=main)
