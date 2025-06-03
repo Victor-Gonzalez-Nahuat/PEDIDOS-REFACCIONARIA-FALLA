@@ -107,6 +107,7 @@ def formatear_fecha_aammdd(valor):
     except:
         return ""
 def main(page: ft.Page):
+    page.theme_mode = ft.ThemeMode.LIGHT
     page.title = "📦 Pedido de Productos (Flet Web)"
     page.scroll = True
     page.bgcolor = "#f0f4ff"
